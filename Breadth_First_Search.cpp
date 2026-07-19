@@ -6,11 +6,11 @@ using namespace std;
 int main(){
     vector<vector<int>> adjacency = {
         {1, 3, 4},
-        {2},
-        {0},
+        {2, 0},
+        {1, 6},
         {0, 5},
         {0, 5},
-        {0}
+        {3, 4}
     };
 
     // assuming root is the 0 node; consequently, level 1 would be x[0]
@@ -26,15 +26,32 @@ int main(){
             s.insert(inner2);
         }
     }
+    
+    int l = 1;
 
-    while (True){
-        for (int x: level[1]){
+    while (true){
+        // dynamically allocating a vector to be add later to the level vector
+        vector<int>* v = new vector<int>();
+
+        for (int x: level[l]){
             for (int y: adjacency[x]){
 
+                if (s.find(y) == s.end()){
+                    v->push_back(y);
+                    s.insert(y);
+
+                }
             }
 
-
         }
+        if ((*v).size() != 0){
+            level.push_back(*v);
+            l++;
+        }
+        else break;
+
+        delete v;
+
     }
 
 

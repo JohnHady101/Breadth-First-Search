@@ -10,7 +10,8 @@ int main(){
         {1, 6},
         {0, 5},
         {0, 5},
-        {3, 4}
+        {3, 4},
+        {2}
     };
 
     // assuming root is the 0 node; consequently, level 1 would be x[0]
@@ -26,7 +27,7 @@ int main(){
             s.insert(inner2);
         }
     }
-    
+
     int l = 1;
 
     while (true){
@@ -51,6 +52,7 @@ int main(){
         else break;
 
         delete v;
+        v = nullptr;
 
     }
 
